@@ -7,7 +7,10 @@ export default function Formulario({ onClose }) {
 
   const onSubmit = (data) => {
     console.log("Datos enviados:", data);
+    localStorage.setItem("formDato", JSON.stringify(data));
+
     alert("Formulario enviado");
+
   };
 
   return (
