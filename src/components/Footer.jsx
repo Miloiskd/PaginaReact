@@ -7,7 +7,6 @@ function Footer() {
       <div className="footer-content">
         <p>© 2025 PavéMood - Todos los derechos reservados</p>
 
-        {/* Links que aparecen al expandirse */}
         <div className="footer-extra-links">
           <a href="#politicas">Políticas de privacidad</a> ·{" "}
           <a href="#terminos">Términos de uso</a> ·{" "}

@@ -39,7 +39,6 @@ aside .cards {
   border-top-right-radius: 12px;
 }
 
-/* Imagen que aparece al hacer hover */
 .card__img--hover {
   transition: 0.3s all ease-out;
   background-size: cover;

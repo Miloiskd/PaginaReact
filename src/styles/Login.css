@@ -5,7 +5,6 @@ body {
   background: linear-gradient(135deg, #fdf6ec, #fff);
 }
 
-/* Centrar login */
 .login-container {
   display: flex;
   justify-content: center;
@@ -13,7 +12,6 @@ body {
   min-height: 100vh;
 }
 
-/* Tarjeta */
 .login-card {
   background: white;
   padding: 40px 30px;
@@ -30,7 +28,6 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Título elegante */
 .login-title {
   font-family: "Merriweather", serif;
   color: #5a3825;
@@ -38,7 +35,6 @@ body {
   font-size: 1.8rem;
 }
 
-/* Inputs */
 .login-card input {
   width: 100%;
   padding: 12px;
@@ -55,7 +51,6 @@ body {
   box-shadow: 0 0 6px rgba(230, 57, 70, 0.3);
 }
 
-/* Botón principal */
 .btn-primary {
   width: 100%;
   padding: 12px;
@@ -75,7 +70,6 @@ body {
   transform: translateY(-2px);
 }
 
-/* Botón alternativo */
 .btn-secondary {
   background: transparent;
   border: none;
@@ -91,7 +85,6 @@ body {
   color: #c62828;
 }
 
-/* Mensajes */
 .login-message {
   margin-top: 15px;
   font-size: 14px;

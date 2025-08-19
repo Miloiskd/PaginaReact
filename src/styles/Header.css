@@ -8,7 +8,7 @@ header {
   position: fixed;
   top: 0; left: 0;
   width: 100%;
-  height: 100px; /* altura inicial */
+  height: 100px;
   background: linear-gradient(135deg, rgba(252,237,208,0.98) 0%, rgba(245,230,200,0.98) 50%, rgba(240,220,185,0.98) 100%);
   backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(160,120,40,0.15);
@@ -22,7 +22,7 @@ header {
 
 /* ===== NAVBAR AL HACER SCROLL (solo cambia altura) ===== */
 .navbar.small {
-  height: 70px; /* se reduce solo verticalmente */
+  height: 70px; 
   background: linear-gradient(135deg, #fcedd0 0%, #fcedd0 100%);
   box-shadow: 0 6px 20px rgba(0,0,0,0.15), 0 1px 0 rgba(255,255,255,0.2) inset;
 }
@@ -92,7 +92,6 @@ header {
   font-size: 0.85rem;
 }
 
-/* ===== USER SECTION / BOTÓN LOGOUT ===== */
 .user-section {
   display: flex;
   align-items: center;
