@@ -23,6 +23,7 @@ export default function App() {
 
   const handleLoginSuccess = () => {
     setUser(JSON.parse(localStorage.getItem("usuario") || null))
+    setSesionActiva(true)
   };
 
   const handleLogout = () => {
@@ -33,7 +34,7 @@ export default function App() {
 
   if (!sesionActiva) {
     // Mostrar el login si no hay ninguna sesión activa
-    return <Login onlogin={handleLoginSuccess} />;
+    return <Login onLogin={handleLoginSuccess} />;
   }
 
   return (
@@ -80,6 +81,7 @@ export default function App() {
             >
             </button>
             <Formulario onClose={() => setMostrarFormulario(false)} />
+
           </div>
         </div>
       )}
