@@ -1,0 +1,65 @@
+main {
+  grid-area: main;
+  background-color: #ffffff;
+  padding: 10px;
+  margin-top: 50px;
+  box-sizing: border-box;
+}
+
+
+.Presentation {
+  background: linear-gradient(135deg, #fbfbfb, #ffffff);
+  border-radius: 15px;
+  padding: 30px;
+  margin: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.Presentation::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 140, 0, 0.1);
+  transform: rotate(45deg);
+  border-radius: 10px;
+}
+
+.presentation-content {
+  position: relative;
+  z-index: 1;
+}
+
+.presentation-title {
+  font-size: 2rem;
+  color: #a0522d;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #ffb347;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.presentation-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #5a3d2e;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.presentation-text strong {
+  color: #a0522d;
+}
+
+.presentation-quote {
+  font-style: italic;
+  color: #804000;
+  background: rgba(255, 165, 0, 0.1);
+  padding: 10px 15px;
+  border-left: 5px solid #ff8c00;
+  border-radius: 5px;
+}

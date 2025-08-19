@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #fdf6ec, #fff);
+}
+
+/* Centrar login */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Tarjeta */
+.login-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
+  width: 350px;
+  text-align: center;
+  border: 1px solid #f0e6da;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Título elegante */
+.login-title {
+  font-family: "Merriweather", serif;
+  color: #5a3825;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+}
+
+/* Inputs */
+.login-card input {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.login-card input:focus {
+  border-color: #e63946;
+  box-shadow: 0 0 6px rgba(230, 57, 70, 0.3);
+}
+
+/* Botón principal */
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #e63946;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #c62828;
+  transform: translateY(-2px);
+}
+
+/* Botón alternativo */
+.btn-secondary {
+  background: transparent;
+  border: none;
+  color: #5a3825;
+  font-size: 14px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  text-decoration: underline;
+  color: #c62828;
+}
+
+/* Mensajes */
+.login-message {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #5a3825;
+}

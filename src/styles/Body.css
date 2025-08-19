@@ -1,0 +1,26 @@
+.body-container {
+  padding: 2rem;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.producto-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.producto-card img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.producto-card:hover {
+  transform: scale(1.05);
+}

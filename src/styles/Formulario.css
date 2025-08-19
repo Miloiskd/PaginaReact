@@ -1,0 +1,78 @@
+/* Contenedor general del formulario */
+.formulario-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  animation: aparecer 0.3s ease-out;
+}
+
+/* Animación de aparición */
+@keyframes aparecer {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Labels */
+.formulario-container label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+/* Inputs y textarea */
+.formulario-container input,
+.formulario-container textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.formulario-container input:focus,
+.formulario-container textarea:focus {
+  border: 1px solid #d4a574;
+  box-shadow: 0 0 6px rgba(245, 87, 108, 0.5);
+}
+
+/* Mensajes de error */
+.formulario-container span {
+  font-size: 0.9rem;
+  color: red;
+}
+
+/* Botón enviar */
+.formulario-container button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #d4a574, #c87d2d);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.formulario-container button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #e3e3e3, #b46817);
+}
+
+.formulario-container textarea {
+  min-height: 100px;
+  resize: vertical;
+}
