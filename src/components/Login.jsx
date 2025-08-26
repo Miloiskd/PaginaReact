@@ -9,18 +9,36 @@ export default function Login({ onLogin }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+        const usuarioLimpio = usuario.trim().toLowerCase();
+
         if (registrando) {
-            localStorage.setItem("usuario", JSON.stringify({ usuario, clave }));
+            if (usuarios.some(u => u.usuario.toLowerCase() === usuarioLimpio)) {
+                setMensaje("⚠️ Ese usuario ya está registrado.");
+                return;
+            }
+            usuarios.push({ usuario: usuarioLimpio, clave });
+            localStorage.setItem("usuarios", JSON.stringify(usuarios));
             setMensaje("Usuario registrado. Ya puede iniciar sesión.");
             setRegistrando(false);
             setClave("");
             return;
         }
-        const datos = JSON.parse(localStorage.getItem("usuario") || "null");
-        if (datos && datos.usuario === usuario && datos.clave === clave) {
-            localStorage.setItem("sesion", "activa");
-            setMensaje(`🎉 Bienvenido, ${usuario}!`);
-            onLogin?.();
+
+        const datos = usuarios.find(u => 
+            u.usuario.toLowerCase() === usuarioLimpio && u.clave === clave
+        );
+        
+        if (datos) {
+            try {
+                localStorage.setItem("sesion", "activa");
+                localStorage.setItem("usuario", JSON.stringify(datos));
+                setMensaje(`🎉 Bienvenido, ${usuarioLimpio}!`);
+                onLogin?.(datos);
+            } catch (error) {
+                console.error("Error al guardar sesión:", error);
+                setMensaje("Error al iniciar sesión");
+            }
         } else {
             setMensaje("Usuario o contraseña incorrecta");
         }

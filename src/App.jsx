@@ -8,6 +8,7 @@ import Carousel from "./components/Carousel";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Formulario from "./components/Formulario";
+import Lista from "./components/Lista";
 
 export default function App() {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
@@ -15,25 +16,36 @@ export default function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const ses = localStorage.getItem("sesion") === "activa";
-    const usu = JSON.parse(localStorage.getItem("usuario") || "null");
-    setSesionActiva(ses);
-    setUser(usu);
+    try {
+      const ses = localStorage.getItem("sesion") === "activa";
+      const userStr = localStorage.getItem("usuario");
+      
+      if (ses && userStr) {
+        const usu = JSON.parse(userStr);
+        setSesionActiva(true);
+        setUser(usu);
+      }
+    } catch (error) {
+      console.error("Error cargando sesión:", error);
+    }
   }, []);
 
-  const handleLoginSuccess = () => {
-    setUser(JSON.parse(localStorage.getItem("usuario") || null))
-    setSesionActiva(true)
+  const handleLoginSuccess = (usuarioObj) => {
+    if (!usuarioObj) return;
+    localStorage.setItem("sesion", "activa");
+    localStorage.setItem("usuario", JSON.stringify(usuarioObj));
+    setUser(usuarioObj);
+    setSesionActiva(true);
   };
 
   const handleLogout = () => {
     setSesionActiva(false);
-    localStorage.removeItem("sesion");
     setUser(null);
+    localStorage.removeItem("sesion");
+    //localStorage.removeItem("usuario");
   };
 
   if (!sesionActiva) {
-    // Mostrar el login si no hay ninguna sesión activa
     return <Login onLogin={handleLoginSuccess} />;
   }
 
@@ -57,9 +69,9 @@ export default function App() {
         </div>
 
         <div className="Categorie">
-          <Categorie />
+          {user && <Lista user={user} />}
         </div>
-
+        
         <footer>
           <Footer />
         </footer>
@@ -81,7 +93,6 @@ export default function App() {
             >
             </button>
             <Formulario onClose={() => setMostrarFormulario(false)} />
-
           </div>
         </div>
       )}
