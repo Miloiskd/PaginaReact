@@ -34,7 +34,6 @@ body.dark-mode {
   --color-btn-card-hover: #a07828;
 }
 
-/* ==================== ESTILOS GENERALES ==================== */
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -75,7 +74,6 @@ aside .cards {
   transform: scale(1.05);
 }
 
-/* Imagen principal de la card */
 .card__img {
   visibility: hidden;
   background-size: cover;

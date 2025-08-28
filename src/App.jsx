@@ -31,7 +31,9 @@ export default function App() {
     setIsDarkMode(prevMode => !prevMode);
   }
   const esAdmin = user?.tipo === "user-admin"; 
-
+ 
+  // Elaborada en clases
+  /*
   useEffect(() => {
     try {
       const ses = localStorage.getItem("sesion") === "activa";
@@ -45,6 +47,15 @@ export default function App() {
     } catch (error) {
       console.error("Error cargando sesión:", error);
     }
+  }, []);
+  */
+
+  useEffect(() => {
+  // Para siempre limpiar cualquier sesión previa al iniciar la app
+    localStorage.removeItem("sesion");
+    localStorage.removeItem("usuario");
+    setSesionActiva(false);
+    setUser(null);
   }, []);
 
   const handleLoginSuccess = (usuarioObj) => {
