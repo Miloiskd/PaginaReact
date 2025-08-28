@@ -22,7 +22,7 @@ En esta primera etapa se incluyen funcionalidades básicas como:
 
 ---
 
-### ✅ To-Do List
+### To-Do List
 1. **Filtros de tareas**
    - Mostrar: **Todos | Pendientes | Completados**.
    - El filtro se mantiene al agregar nuevas tareas (no se “resetea”).
