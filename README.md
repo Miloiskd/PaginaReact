@@ -1,4 +1,4 @@
-# 📌 Página Web - Proyecto Desarrollo Web
+# Página Web - Proyecto Desarrollo Web
 
 Este proyecto está siendo desarrollado por **Johan Camilo Balanta Santacruz** como propuesta de la clase de **Desarrollo Web**.  
 En esta primera etapa se incluyen funcionalidades básicas como:
@@ -10,13 +10,13 @@ En esta primera etapa se incluyen funcionalidades básicas como:
 - Página de contacto
 - Tema claro / oscuro
 
-📦 **Entregable:** Repositorio en GitHub.
+**Entregable:** Repositorio en GitHub.
 
 ---
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
-### 🔑 Autenticación
+### Autenticación
 - La aplicación permite ingresar como **Administrador** o como **Usuario**.
 - El rol determina los permisos y la información que se muestra.
 
@@ -36,7 +36,7 @@ En esta primera etapa se incluyen funcionalidades básicas como:
 
 ---
 
-### 📊 Dashboard del Administrador
+### Dashboard del Administrador
 - Si el usuario logueado es **admin**, se muestra un **Dashboard** con:
   - Saludo dinámico según la hora del día:  
     _“Buenos días/tardes/noches, {usuario}”_.
