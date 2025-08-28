@@ -1,12 +1,26 @@
+:root {
+  --color-card: #fff;
+  --color-btn-carousel: #a07828;
+  --color-btn-carousel-hover: #7a5c1e;
+  --color-indicator: #bbb;
+}
+
+body.dark {
+  --color-card: #1e1e1e;
+  --color-btn-carousel: #d4a373;
+  --color-btn-carousel-hover: #b07d3b;
+  --color-indicator: #666;
+}
+
 .carousel {
   grid-area: carousel;
   width: 90%;
   max-width: 2000px;
   overflow: hidden;
-  margin: 30px auto;
-  border-radius: 10px;
+  margin: 120px auto 30px; 
+  border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  background-color: #fff;
+  background-color: var(--color-card);
   position: relative;
 }
 
@@ -17,39 +31,76 @@
 }
 
 .carousel-item {
-  min-width: 200px;
+  min-width: 250px;
   margin: 0 10px;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.1);
-  background-color: #fafafa;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  background-color: var(--color-card);
+  transition: transform 0.3s ease;
+}
+
+.carousel-item:hover {
+  transform: translateY(-5px);
 }
 
 .carousel-item img {
   width: 100%;
-  height: 300px;
+  height: 320px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item img:hover {
+  transform: scale(1.05);
 }
 
 .carousel-controls {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .carousel-controls button {
-  background: #a07828;
+  background: var(--color-btn-carousel);
   border: none;
-  padding: 8px 12px;
-  margin: 0 5px;
+  padding: 10px 14px;
+  margin: 0 6px;
   color: white;
   font-size: 18px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .carousel-controls button:hover {
-  background: #7a5c1e;
+  background: var(--color-btn-carousel-hover);
+  transform: scale(1.1);
+}
+
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.carousel-indicators button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-indicator);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.carousel-indicators button.active {
+  background: var(--color-btn-carousel);
+  transform: scale(1.2);
+}
+
+.carousel-indicators button:hover {
+  background: var(--color-btn-carousel-hover);
 }

@@ -1,18 +1,40 @@
+:root {
+  --color-bgc: #ffffff; 
+  --color-bg: #faf9f6;    
+  --color-text: #333;     
+  --color-card: #fff;     
+  --color-modal-bg: #fff;
+  --color-overlay: rgba(0,0,0,0.6);
+
+  --color-primary: #a0522d;   
+  --color-secondary: #5a3d2e; 
+  --color-accent: #804000;    
+
+  --color-btn-contacto: #f5d057;
+  --color-btn-contacto-hover: #f093fb;
+
+  --color-btn-admin: #e63946;
+  --color-btn-admin-hover: #d62839;
+
+  --shadow-card: 0 8px 20px rgba(0, 0, 0, 0.1);
+  --border-muted: #ddd;
+}
+
+/* 🎨 Estilo principal */
 main {
   grid-area: main;
-  background-color: #ffffff;
+  background-color: var(--color-bgc);
   padding: 10px;
   margin-top: 50px;
   box-sizing: border-box;
 }
 
-
 .Presentation {
-  background: linear-gradient(135deg, #fbfbfb, #ffffff);
+  background: linear-gradient(135deg, var(--color-bg), var(--color-bgc));
   border-radius: 15px;
   padding: 30px;
   margin: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
 }
@@ -36,9 +58,9 @@ main {
 
 .presentation-title {
   font-size: 2rem;
-  color: #a0522d;
+  color: var(--color-primary);
   margin-bottom: 15px;
-  border-bottom: 3px solid #ffb347;
+  border-bottom: 3px solid var(--color-primary);
   display: inline-block;
   padding-bottom: 5px;
 }
@@ -46,20 +68,69 @@ main {
 .presentation-text {
   font-size: 1rem;
   line-height: 1.6;
-  color: #5a3d2e;
+  color: var(--color-secondary);
   text-align: justify;
   margin-bottom: 20px;
 }
 
 .presentation-text strong {
-  color: #a0522d;
+  color: var(--color-primary);
 }
 
 .presentation-quote {
   font-style: italic;
-  color: #804000;
+  color: var(--color-accent);
   background: rgba(255, 165, 0, 0.1);
   padding: 10px 15px;
   border-left: 5px solid #ff8c00;
   border-radius: 5px;
+}
+
+.admin-button {
+  background-color: var(--color-primary);
+  color: var(--color-bgc);
+  border: none;
+  padding: 10px 20px;
+  margin-left: auto;
+  margin-right: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.admin-button:hover {
+  background-color: var(--color-accent);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: var(--color-bg);
+  border-bottom: 2px solid var(--border-muted);
+}
+
+body.dark {
+  --color-bgc: #1a1a1a;
+  --color-bg: #2a2a2a;
+  --color-text: #f0f0f0;
+  --color-card: #333;
+  --color-modal-bg: #2d2d2d;
+  --color-overlay: rgba(0,0,0,0.8);
+
+  --color-primary: #ffb347; 
+  --color-secondary: #ddd;
+  --color-accent: #ff8c00;
+
+  --color-btn-contacto: #ff8c00;
+  --color-btn-contacto-hover: #ff6a00;
+
+  --color-btn-admin: #c53030;
+  --color-btn-admin-hover: #9b2c2c;
+
+  --shadow-card: 0 8px 20px rgba(255, 255, 255, 0.1);
+  --border-muted: #444;
 }

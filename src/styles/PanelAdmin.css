@@ -1,0 +1,43 @@
+.admin-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.admin-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.admin-buttons button {
+  background: #a07828;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.admin-buttons button:hover {
+  background: #7a5c1e;
+}
+
+.admin-buttons .active {
+  background: #5c3d13;
+}
+
+.seccion-pendientes,
+.seccion-todas {
+  text-align: left;
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #fcedd0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.usuario-tareas {
+  margin-bottom: 15px;
+}

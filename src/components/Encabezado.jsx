@@ -1,8 +1,23 @@
-import React, { useEffect } from "react";
+
+import React, { useEffect, useState } from "react";
 import "../styles/Header.css";
 import logo from "../img/Marca.png";
 
 export default function Encabezado({ onLogout }) {
+  const [saludo, setSaludo] = useState("");
+
+  useEffect(() => {
+    const currentDate = new Date();
+    const time = currentDate.getHours();
+
+    if (time < 12) {
+      setSaludo('Buenos dias')
+    } else if (time < 18) {
+      setSaludo('Buenas Tardes')
+    } else {
+      setSaludo('Buenas noches')
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,25 +65,26 @@ export default function Encabezado({ onLogout }) {
 
   return (
     <header className="navbar">
-      <div className="navbar-container">
-        <a href="#" className="logo">
-          <img src={logo} alt="PavéMood Logo" />
-        </a>
+          <div className="navbar-container">
+            <a href="#" className="logo">
+              <img src={logo} alt="PavéMood Logo" />
+            </a>
 
-        <nav className="nav-links" id="navLinks">
-          <a href="#inicio" className="nav-link">Inicio</a>
-          <a href="#productos" className="nav-link">Productos</a>
-          <a href="#servicios" className="nav-link">Servicios</a>
-          <a href="#nosotros" className="nav-link">Nosotros</a>
-          <a href="#contacto" className="nav-link">Contacto</a>
-        </nav>
+            <nav className="nav-links" id="navLinks">
+              <a href="#inicio" className="nav-link">Inicio</a>
+              <a href="#productos" className="nav-link">Productos</a>
+              <a href="#servicios" className="nav-link">Servicios</a>
+              <a href="#nosotros" className="nav-link">Nosotros</a>
+              <a href="#contacto" className="nav-link">Contacto</a>
+            </nav>
 
-        <div className="user-section">
-          <button className="logout-btn" type="button" onClick={onLogout}>
-            Cerrar sesión
-          </button>
-        </div>
-      </div>
-    </header>
-  );
-}
+            <div className="user-section">
+              <span className="saludo">{saludo}</span> {/* Saludo aquí */}
+              <button className="logout-btn" type="button" onClick={onLogout}>
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
+        </header>
+      );
+    }

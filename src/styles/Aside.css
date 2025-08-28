@@ -1,21 +1,68 @@
+:root {
+  --color-bg: #faf9f6;
+  --color-text: #333;
+  --color-text-secundario: #666;
+  --color-card: #fff;
+  --color-modal-bg: #fff;
+  --color-overlay: rgba(0, 0, 0, 0.6);
+
+  --color-btn-contacto: #f5d057;
+  --color-btn-contacto-hover: #f093fb;
+
+  --color-btn-admin: #e63946;
+  --color-btn-admin-hover: #d62839;
+
+  --color-btn-card: #a07828;
+  --color-btn-card-hover: #7a5c1e;
+}
+
+body.dark-mode {
+  --color-bg: #1c1c1c;
+  --color-text: #f0f0f0;
+  --color-text-secundario: #bbb;
+  --color-card: #2a2a2a;
+  --color-modal-bg: #2a2a2a;
+  --color-overlay: rgba(255, 255, 255, 0.1);
+
+  --color-btn-contacto: #d4a017;
+  --color-btn-contacto-hover: #b8860b;
+
+  --color-btn-admin: #ff6b6b;
+  --color-btn-admin-hover: #ff5252;
+
+  --color-btn-card: #d4a017;
+  --color-btn-card-hover: #a07828;
+}
+
+/* ==================== ESTILOS GENERALES ==================== */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Segoe UI", sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
 aside {
   grid-area: sidebar;
-  background-color: #ffffff;
+  background-color: var(--color-card);
   padding: 10px;
   max-width: 100%;
   margin-top: 6%;
   box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 aside .cards {
   display: flex;
   flex-wrap: row;
   gap: 15px;
+  justify-content: center;
 }
 
 .card {
   transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
-  background-color: #fff;
+  background-color: var(--color-card);
   width: 250px;
   position: relative;
   border-radius: 12px;
@@ -58,7 +105,7 @@ aside .cards {
 
 .card__info {
   z-index: 2;
-  background-color: #fff;
+  background-color: var(--color-card);
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
   padding: 16px 20px 20px;
@@ -69,7 +116,7 @@ aside .cards {
   font-size: 12px;
   letter-spacing: 2px;
   font-weight: 500;
-  color: #868686;
+  color: var(--color-text-secundario);
 }
 
 .card__title {
@@ -79,21 +126,21 @@ aside .cards {
 
 .card__description {
   font-size: 14px;
-  color: #666;
+  color: var(--color-text-secundario);
   margin-bottom: 10px;
 }
 
 .card__by {
   font-size: 14px;
   font-weight: 500;
-  color: #AD7D52;
+  color: var(--color-btn-card-hover);
 }
 
 .card button {
   margin-top: 8px;
   padding: 8px 12px;
-  background: #a07828;
-  color: #fff;
+  background: var(--color-btn-card);
+  color: var(--color-card);
   font-size: 13px;
   font-weight: bold;
   border: none;
@@ -103,5 +150,5 @@ aside .cards {
 }
 
 .card button:hover {
-  background: #7a5c1e;
+  background: var(--color-btn-card-hover);
 }

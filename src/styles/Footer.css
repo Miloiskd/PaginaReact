@@ -1,12 +1,19 @@
+:root {
+  --color-footer-bg: #fcedd0;
+  --color-footer-bg-dark: #2c1810;
+}
+
+
 footer {
   grid-area: footer;
-  background: #fcedd0;
+  background: var(--color-footer-bg, #fcedd0);
+  color: var(--color-text, #2c1810);
   padding: 20px;
   text-align: center;
   border-radius: 12px 12px 0 0;
   width: 100%;
+  transition: background 0.4s ease, color 0.4s ease;
 }
-
 
 body.tight footer {
   min-height: 200px; 
@@ -22,13 +29,19 @@ body.tight footer {
   height: 100%;
 }
 
-.footer .extra-links {
+footer .extra-links {
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
-body.tight .footer .extra-links {
+body.tight footer .extra-links {
   opacity: 1;
   transform: translateY(0);
+}
+
+body.dark-mode 
+ footer {
+  background: var(--color-footer-bg-dark, #2c1810);
+  color: var(--color-text-dark, #fcedd0);
 }

@@ -1,3 +1,37 @@
+:root {
+  --color-bg: #faf9f6;
+  --color-text: #333;
+  --color-card: #fff;
+  --color-modal-bg: #fff;
+  --color-overlay: rgba(0,0,0,0.6);
+
+  --color-btn-contacto: #f5d057;
+  --color-btn-contacto-hover: #f093fb;
+
+  --color-btn-admin: #e63946;
+  --color-btn-admin-hover: #d62839;
+}
+
+body.dark-mode {
+  --color-bg: #121212;
+  --color-text: #f5f5f5;
+  --color-card: #1e1e1e;
+  --color-modal-bg: #2a2a2a;
+  --color-overlay: rgba(0,0,0,0.8);
+
+  --color-btn-contacto: #f093fb;
+  --color-btn-contacto-hover: #000000;
+
+  --color-btn-admin: #d62839;
+  --color-btn-admin-hover: #a4161a;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -29,7 +63,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #f5d057;
+  background: var(--color-btn-contacto);
   color: white;
   border: none;
   border-radius: 50px;
@@ -43,7 +77,28 @@
 
 .boton-flotante:hover {
   transform: scale(1.1);
-  background: #f093fb;
+  background: var(--color-btn-contacto-hover);
+}
+
+.boton-flotante-admin {
+  position: fixed;
+  bottom: 80px; 
+  right: 20px;
+  background: var(--color-btn-admin);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, background 0.3s ease;
+  z-index: 1000;
+}
+
+.boton-flotante-admin:hover {
+  transform: scale(1.1);
+  background: var(--color-btn-admin-hover);
 }
 
 .modal-overlay {
@@ -52,7 +107,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: var(--color-overlay);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,22 +115,41 @@
 }
 
 .modal-content {
-  background: #fff;
+  background: var(--color-modal-bg);
   padding: 2rem;
   border-radius: 12px;
   max-width: 400px;
   width: 90%;
   box-shadow: 0 6px 15px rgba(0,0,0,0.3);
   position: relative;
+  color: var(--color-text);
 }
 
 .cerrar {
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #333;
+  color: var(--color-text);
   cursor: pointer;
   position: absolute;
   top: 10px;
   right: 15px;
+}
+.boton-flotante-darkmode {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-btn-card);
+  color: var(--color-card);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease;
+  z-index: 1000;
+}
+
+.boton-flotante-darkmode:hover {
+  background: var(--color-btn-card-hover);
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./styles/App.css";
 import Encabezado from "./components/Encabezado";
 import Main from "./components/Main";
@@ -9,17 +10,33 @@ import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Formulario from "./components/Formulario";
 import Lista from "./components/Lista";
+import PanelAdministrador from "./components/LoginAdmin"; 
 
 export default function App() {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const [mostrarAdmin, setMostrarAdmin] = useState(false);
   const [sesionActiva, setSesionActiva] = useState(false);
   const [user, setUser] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode')
+    } else {
+      document.body.classList.remove('dark-mode')
+    }
+  }, [isDarkMode]);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(prevMode => !prevMode);
+  }
+  const esAdmin = user?.tipo === "user-admin"; 
 
   useEffect(() => {
     try {
       const ses = localStorage.getItem("sesion") === "activa";
       const userStr = localStorage.getItem("usuario");
-      
+
       if (ses && userStr) {
         const usu = JSON.parse(userStr);
         setSesionActiva(true);
@@ -42,7 +59,7 @@ export default function App() {
     setSesionActiva(false);
     setUser(null);
     localStorage.removeItem("sesion");
-    //localStorage.removeItem("usuario");
+    localStorage.removeItem("usuario");
   };
 
   if (!sesionActiva) {
@@ -71,14 +88,15 @@ export default function App() {
         <div className="Categorie">
           {user && <Lista user={user} />}
         </div>
-        
+
         <footer>
           <Footer />
         </footer>
       </div>
 
-      <button 
-        className="boton-flotante" 
+      {/* Botón flotante de contacto */}
+      <button
+        className="boton-flotante"
         onClick={() => setMostrarFormulario(true)}
       >
         Contáctanos
@@ -87,15 +105,47 @@ export default function App() {
       {mostrarFormulario && (
         <div className="modal-overlay">
           <div className="modal-content">
-            <button 
-              className="cerrar" 
+            <button
+              className="cerrar"
               onClick={() => setMostrarFormulario(false)}
             >
+              X
             </button>
             <Formulario onClose={() => setMostrarFormulario(false)} />
           </div>
         </div>
       )}
+
+      {esAdmin && (
+        <>
+          <button
+            className="boton-flotante-admin"
+            onClick={() => setMostrarAdmin(true)}
+          >
+            Panel Admin
+          </button>
+
+          {mostrarAdmin && (
+            <div className="modal-overlay">
+              <div className="modal-content">
+                <button
+                  className="cerrar"
+                  onClick={() => setMostrarAdmin(false)}
+                >
+                  X
+                </button>
+                <PanelAdministrador onClose={() => setMostrarAdmin(false)} />
+              </div>
+            </div>
+          )}
+        </>
+      )}
+      <button
+            className="boton-flotante-darkmode"
+            onClick={toggleDarkMode}
+          >
+            {isDarkMode ? "☀️ Claro" : "🌙 Oscuro"}
+          </button>
     </>
   );
 }

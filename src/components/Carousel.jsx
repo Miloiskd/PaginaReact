@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import $ from "jquery";
+import React, { useRef, useState, useEffect } from "react";
 import pavePina from "../img/PavePiña.png";
 import paveUva from "../img/PaveUva.png";
 import paveLimon from "../img/PaveLimon.png";
@@ -8,63 +7,65 @@ import pave1 from "../img/Pave1.jpg";
 import "../styles/Carousel.css";
 
 function Carousel() {
+  const trackRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(3); // Ajusta según quieras
+  const images = [pavePina, paveUva, paveLimon, paveChocolate, pave1];
+
+  const updateTransform = (index) => {
+    const track = trackRef.current;
+    if (track && track.children.length > 0) {
+      const itemWidth = track.children[0].offsetWidth + 20; // 20px margin
+      track.style.transform = `translateX(-${itemWidth * index}px)`;
+    }
+  };
+
+  const next = () => {
+    const maxIndex = images.length - itemsPerView;
+    if (currentIndex < maxIndex) {
+      setCurrentIndex((prev) => prev + 1);
+    }
+  };
+
+  const prev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
+
   useEffect(() => {
-    const track = document.querySelector(".carousel-track");
-    const nextBtn = document.querySelector(".next");
-    const prevBtn = document.querySelector(".prev");
+    updateTransform(currentIndex);
+  }, [currentIndex, itemsPerView]);
 
-    let index = 0;
-    const itemWidth =
-      document.querySelector(".carousel-item").offsetWidth + 20;
+  useEffect(() => {
+    const handleResize = () => {
+      // Aquí puedes ajustar itemsPerView según el tamaño de pantalla
+      if (window.innerWidth < 600) setItemsPerView(1);
+      else if (window.innerWidth < 900) setItemsPerView(2);
+      else setItemsPerView(3);
+      updateTransform(currentIndex);
+    };
 
-    nextBtn.addEventListener("click", () => {
-      if (index < track.children.length - 3) {
-        index++;
-        track.style.transform = `translateX(-${itemWidth * index}px)`;
-      }
-    });
+    window.addEventListener("resize", handleResize);
+    handleResize(); // Llamada inicial
 
-    prevBtn.addEventListener("click", () => {
-      if (index > 0) {
-        index--;
-        track.style.transform = `translateX(-${itemWidth * index}px)`;
-      }
-    });
-
-    $(window).on("scroll", function () {
-      let scrollBottom = $(window).scrollTop() + $(window).height();
-      let documentHeight = $(document).height();
-      if (scrollBottom >= documentHeight - 5) {
-        $("body").addClass("tight");
-        $(".arrow").fadeOut();
-      } else {
-        $("body").removeClass("tight");
-        $(".arrow").fadeIn();
-      }
-    });
-
-    $(".arrow").click(function () {
-      $("html").animate(
-        { scrollTop: $("html").prop("scrollHeight") },
-        1200
-      );
-    });
-  }, []);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [currentIndex]);
 
   return (
     <div className="carousel">
-      <div className="carousel-track">
-        <div className="carousel-item"><img src={pavePina} alt="Producto 1" /></div>
-        <div className="carousel-item"><img src={paveUva} alt="Producto 2" /></div>
-        <div className="carousel-item"><img src={paveLimon} alt="Producto 3" /></div>
-        <div className="carousel-item"><img src={paveChocolate} alt="Producto 4" /></div>
-        <div className="carousel-item"><img src={pave1} alt="Producto 5" /></div>
-        <div className="carousel-item"><img src={pavePina} alt="Producto 6" /></div>
-        <div className="carousel-item"><img src={pavePina} alt="Producto 7" /></div>
+      <div className="carousel-track" ref={trackRef}>
+        {images.map((img, i) => (
+          <div className="carousel-item" key={i}>
+            <img src={img} alt={`Producto ${i + 1}`} />
+          </div>
+        ))}
       </div>
       <div className="carousel-controls">
-        <button className="prev">‹</button>
-        <button className="next">›</button>
+        <button onClick={prev} className="prev">‹</button>
+        <button onClick={next} className="next">›</button>
       </div>
     </div>
   );
